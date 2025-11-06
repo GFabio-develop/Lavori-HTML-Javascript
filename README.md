@@ -1,14 +1,11 @@
 # Lavori-HTML-Javascript
 
-<a href="https://alextygh.github.io/lavori/anagrafica_1.0.html">
+<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.html">
     Anagrafica 1.0
   </a><br>
-  <a href="https://alextygh.github.io/lavori/anagrafica_1.1.html">
+  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.1.html">
     Anagrafica 1.1
   </a><br>
-  <a href="https://alextygh.github.io/lavori/index (1)">
-    Convertitore Decimale
-  </a><br>
-  <a href="https://alextygh.github.io/lavori/subnet_binaria.html">
+  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Compito_subnet_mask.html">
     Subnet Binaria
   </a><br>
