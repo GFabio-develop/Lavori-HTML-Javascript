@@ -7,7 +7,7 @@
     Anagrafica 1.1
   </a><br>
   <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/conversione decimale.html">
-    Conversione deciamle
+    Conversione decimale
   </a><br>
   <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Compito_subnet_mask.html">
     Subnet Binaria
