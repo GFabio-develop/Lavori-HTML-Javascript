@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Subnet Mask da Prefix</title>
+</head>
+<body>
+<h2>Calcolo subnet mask da prefix</h2>
+
+<input type="number" id="prefix" placeholder="Inserisci prefix (0-32)">
+<button onclick="genera()">Genera</button>
+
+<p id="risultato"></p>
+
+<script>
+function genera() {
+  var prefix = Number(document.getElementById("prefix").value);
+
+  if (prefix < 0 || prefix > 32 || isNaN(prefix)) {
+    document.getElementById("risultato").innerHTML = "Prefix non valido";
+    return;
+  }
+
+  var ottettiPieni = Math.floor(prefix / 8);
+  var resto = prefix % 8;
+  var mask = [];
+
+  for (var i = 0; i < ottettiPieni; i++) {
+    mask.push("11111111");
+  }
+
+  if (resto > 0) {
+    var parziale = "";
+    for (var i = 0; i < 8; i++) {
+      if (i < resto) parziale += "1";
+      else parziale += "0";
+    }
+    mask.push(parziale);
+  }
+
+  while (mask.length < 4) {
+    mask.push("00000000");
+  }
+
+  var suffix = 32 - prefix;
+  var numHost = suffix === 0 ? 1 : Math.pow(2, suffix) - 2;
+
+  var maskDecimale = "";
+  for (var j = 0; j < mask.length; j++) {
+    maskDecimale += parseInt(mask[j], 2);
+    if (j < mask.length - 1) maskDecimale += ".";
+  }
+
+  var output = "<b>Prefix:</b> /" + prefix + "<br>" +
+               "<b>Subnet mask (binario):</b> " + mask.join(".") + "<br>" +
+               "<b>Subnet mask (decimale):</b> " + maskDecimale + "<br>" +
+               "<b>Suffix:</b> " + suffix + "<br>" +
+               "<b>Numero di host:</b> 2<sup>" + suffix + "</sup> - 2 = " + numHost + "<br>" +
+               "<b>Espressione calcolo:</b> Math.pow(2, " + suffix + ") - 2 = " + numHost;
+
+  document.getElementById("risultato").innerHTML = output;
+}
+</script>
+</body>
+</html>
