@@ -12,3 +12,6 @@
   <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Compito_subnet_mask.html">
     Subnet Binaria
   </a><br>
+  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Subnet_mask_Host.html">
+    Subnet Mask Host
+  </a><br>
