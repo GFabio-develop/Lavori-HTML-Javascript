@@ -93,16 +93,15 @@
                 generazione = calcolaGenerazione(anno);
             }
 
-            document.getElementById("output").innerHTML = `
-                <strong>Nome:</strong> ${nome}<br>
-                <strong>Cognome:</strong> ${cognome}<br>
-                <strong>Indirizzo:</strong> ${indirizzo}<br>
-                <strong>Città:</strong> ${citta}<br>
-                <strong>CAP:</strong> ${cap}<br>
-                <strong>Data di nascita:</strong> ${dataNascita}<br>
-                <strong>Età:</strong> ${eta} anni<br>
-                <strong>Generazione:</strong> ${generazione}
-            `;
+            document.getElementById("output").innerHTML =
+                "<strong>Nome:</strong> " + nome + "<br>" +
+                "<strong>Cognome:</strong> " + cognome + "<br>" +
+                "<strong>Indirizzo:</strong> " + indirizzo + "<br>" +
+                "<strong>Città:</strong> " + citta + "<br>" +
+                "<strong>CAP:</strong> " + cap + "<br>" +
+                "<strong>Data di nascita:</strong> " + dataNascita + "<br>" +
+                "<strong>Età:</strong> " + eta + " anni<br>" +
+                "<strong>Generazione:</strong> " + generazione;
         }
     </script>
 </head>
