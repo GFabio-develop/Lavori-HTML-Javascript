@@ -6,6 +6,9 @@
   <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.1.html">
     Anagrafica 1.1
   </a><br>
+  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_2.0.html">
+    Anagrafica 2.0
+  </a><br>
   <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/conversione decimale.html">
     Conversione decimale
   </a><br>
