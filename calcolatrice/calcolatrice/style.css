@@ -6,12 +6,6 @@ html, body{
     align-items: center;
 }
 
-b{
-    height: 85px;
-    font-size: xx-large;
-    font-style: italic;
-}
-
 #calcolatrice{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -71,4 +65,5 @@ b{
 
 
 /*matiabdg*/
+
 
