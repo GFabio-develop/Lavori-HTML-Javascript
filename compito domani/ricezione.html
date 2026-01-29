@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina di Ricezione</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #output { background-color: #f0f0f0; padding: 15px; border-radius: 5px; border: 1px solid #999; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 5px; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+    <h2>Parametri Ricevuti</h2>
+    <div id="output">In attesa di elaborazione...</div>
+
+    <script>
+        // 1. Legge l'URL e isola la parte dei parametri (es. "?nome=Mario&citta=Roma")
+        var queryString = window.location.search;
+
+        console.log("Stringa grezza: " + queryString); // Utile per debug
+
+        // Verifichiamo se c'è effettivamente una query string
+        if (queryString) {
+            
+            // 2. Rimuove il punto interrogativo iniziale (?)
+            // substring(1) prende la stringa partendo dal secondo carattere
+            var parametriStringa = queryString.substring(1); 
+            
+            // 3. "Splitta" la stringa in un array usando il separatore "&"
+            // Questo divide le coppie (es. ["nome=Mario", "citta=Roma"])
+            var coppie = parametriStringa.split("&");
+
+            var htmlContent = "<ul>";
+
+            // 4. Ciclo per elaborare e stampare ogni coppia
+            for (var i = 0; i < coppie.length; i++) {
+                // Splitta ogni coppia (es. "nome=Mario") usando "=" come separatore
+                var singoloElemento = coppie[i].split("=");
+                
+                var chiave = singoloElemento[0]; // es. "nome"
+                
+                // decodeURIComponent serve per convertire caratteri speciali (come %20 in spazi)
+                var valore = decodeURIComponent(singoloElemento[1]); // es. "Mario"
+
+                // Costruzione della stringa di output
+                htmlContent += "<li><strong>" + chiave + ":</strong> " + valore + "</li>";
+            }
+
+            htmlContent += "</ul>";
+
+            // Stampa finale nella pagina
+            document.getElementById("output").innerHTML = htmlContent;
+
+        } else {
+            document.getElementById("output").innerText = "Nessun parametro trovato nell'URL.";
+        }
+    </script>
+
+</body>
+</html>
