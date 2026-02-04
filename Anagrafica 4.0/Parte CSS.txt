@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualizzazione elenco</title>
+</head>
+<body>
+
+<h2>Elenco persone</h2>
+
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Email</th>
+        <th>Città</th>
+    </tr>
+    <tbody id="tabella">
+    </tbody>
+</table>
+
+<script>
+    var elenco = [];
+
+    // Lettura dei dati dal localStorage
+    if (localStorage.getItem("elenco") != null) {
+        elenco = JSON.parse(localStorage.getItem("elenco"));
+    }
+
+    var tabella = document.getElementById("tabella");
+
+    // Ciclo per stampare gli oggetti nella tabella
+    for (var i = 0; i < elenco.length; i++) {
+
+        var riga = document.createElement("tr");
+
+        var cellaNome = document.createElement("td");
+        var cellaCognome = document.createElement("td");
+        var cellaEmail = document.createElement("td");
+        var cellaCitta = document.createElement("td");
+
+        cellaNome.innerHTML = elenco[i].nome;
+        cellaCognome.innerHTML = elenco[i].cognome;
+        cellaEmail.innerHTML = elenco[i].email;
+        cellaCitta.innerHTML = elenco[i].citta;
+
+        riga.appendChild(cellaNome);
+        riga.appendChild(cellaCognome);
+        riga.appendChild(cellaEmail);
+        riga.appendChild(cellaCitta);
+
+        tabella.appendChild(riga);
+    }
+</script>
+
+</body>
+</html>
