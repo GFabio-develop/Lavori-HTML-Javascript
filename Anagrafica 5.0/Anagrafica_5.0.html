@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserimento Dati</title>
+    <style>
+        body {
+            background-color: #f73614;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .contenitore {
+            background-color: white;
+            border: 2px solid #f73614;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #32eb28;
+        }
+
+        input {
+            margin-bottom: 10px;
+            display: block;
+            width: 90%;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #f73614;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e7eb28;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenitore">
+    <h2>Inserisci Dati</h2>
+
+    <input type="text" id="campoNome" placeholder="Nome">
+    <input type="text" id="campoCognome" placeholder="Cognome">
+    <input type="text" id="campoEmail" placeholder="Email">
+    <input type="text" id="campoCitta" placeholder="Città">
+    <input type="text" id="campoCAP" placeholder="CAP">
+
+    <button onclick="salvaDati()">Salva</button>
+</div>
+
+<script>
+
+    var elencoDati = JSON.parse(localStorage.getItem("elenco")) || [];
+
+    function salvaDati() {
+
+        var nome = document.getElementById("campoNome").value;
+        var cognome = document.getElementById("campoCognome").value;
+        var email = document.getElementById("campoEmail").value;
+        var citta = document.getElementById("campoCitta").value;
+        var cap = document.getElementById("campoCAP").value;
+
+        // REGEX
+        var controlloNome = /^[A-Za-z]+$/;
+        var controlloCognome = /^[A-Za-z]+$/;
+        var controlloCAP = /^[0-9]+$/;
+        var controlloEmail = /^[^@\s]+@[^@\s]+\.[A-Za-z]{2,6}$/;
+
+        if (!controlloNome.test(nome)) {
+            alert("Nome non valido (solo lettere)");
+            return;
+        }
+
+        if (!controlloCognome.test(cognome)) {
+            alert("Cognome non valido (solo lettere)");
+            return;
+        }
+
+        if (!controlloCAP.test(cap)) {
+            alert("CAP non valido (solo numeri)");
+            return;
+        }
+
+        if (!controlloEmail.test(email)) {
+            alert("Email non valida");
+            return;
+        }
+
+        var persona = {
+            n: nome,
+            c: cognome,
+            e: email,
+            cit: citta,
+            cap: cap
+        };
+
+        elencoDati.push(persona);
+
+        localStorage.setItem("elenco", JSON.stringify(elencoDati));
+
+        document.getElementById("campoNome").value = "";
+        document.getElementById("campoCognome").value = "";
+        document.getElementById("campoEmail").value = "";
+        document.getElementById("campoCitta").value = "";
+        document.getElementById("campoCAP").value = "";
+
+        alert("Dati salvati correttamente!");
+    }
+
+</script>
+
+</body>
+</html>
