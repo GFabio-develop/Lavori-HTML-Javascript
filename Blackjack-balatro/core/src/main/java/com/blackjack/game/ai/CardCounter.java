@@ -1,6 +1,6 @@
-package ai;
+package com.blackjack.game.ai;
 
-import cards.Card;
+import com.blackjack.game.cards.Card;
 
 public class CardCounter {
 

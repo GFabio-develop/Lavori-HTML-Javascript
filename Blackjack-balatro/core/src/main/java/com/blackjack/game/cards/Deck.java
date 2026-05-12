@@ -1,4 +1,4 @@
-package cards;
+package com.blackjack.game.cards;
 
 import java.util.*;
 

@@ -3,8 +3,8 @@ package com.blackjack.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import game.GameManager;
-import graphics.Renderer;
+import com.blackjack.game.game.GameManager;
+import com.blackjack.game.graphics.Renderer;
 
 /** Main LibGDX application shared by all platforms. */
 public class BlackJackGame extends ApplicationAdapter {

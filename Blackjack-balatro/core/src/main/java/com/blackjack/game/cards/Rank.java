@@ -1,4 +1,4 @@
-package cards;
+package com.blackjack.game.cards;
 
 public enum Rank {
 

@@ -1,4 +1,4 @@
-package betting;
+package com.blackjack.game.betting;
 
 public enum SideBet {
 

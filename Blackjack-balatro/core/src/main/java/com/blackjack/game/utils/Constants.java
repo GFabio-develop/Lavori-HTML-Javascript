@@ -1,4 +1,4 @@
-package utils;
+package com.blackjack.game.utils;
 
 public class Constants {
 

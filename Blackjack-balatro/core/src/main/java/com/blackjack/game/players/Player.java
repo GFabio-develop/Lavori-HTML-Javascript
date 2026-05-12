@@ -1,6 +1,6 @@
-package players;
+package com.blackjack.game.players;
 
-import cards.Card;
+import com.blackjack.game.cards.Card;
 
 import java.util.ArrayList;
 import java.util.List;

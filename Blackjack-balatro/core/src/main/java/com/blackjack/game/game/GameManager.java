@@ -1,10 +1,10 @@
-package game;
+package com.blackjack.game.game;
 
-import ai.BettingAI;
-import ai.BotDecision;
-import betting.ChipManager;
-import cards.Card;
-import players.*;
+import com.blackjack.game.ai.BettingAI;
+import com.blackjack.game.ai.BotDecision;
+import com.blackjack.game.betting.ChipManager;
+import com.blackjack.game.cards.Card;
+import com.blackjack.game.players.*;
 
 import java.util.ArrayList;
 import java.util.List;

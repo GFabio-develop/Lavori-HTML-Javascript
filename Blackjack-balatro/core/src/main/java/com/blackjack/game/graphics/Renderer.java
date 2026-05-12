@@ -1,7 +1,11 @@
-package graphics;
+package com.blackjack.game.graphics;
 
-import ai.BotDecision;
-import cards.Card;
+import com.blackjack.game.ai.BotDecision;
+import com.blackjack.game.cards.Card;
+import com.blackjack.game.game.GameManager;
+import com.blackjack.game.players.BotPlayer;
+import com.blackjack.game.players.Player;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,9 +15,6 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import game.GameManager;
-import players.BotPlayer;
-import players.Player;
 
 public class Renderer {
 

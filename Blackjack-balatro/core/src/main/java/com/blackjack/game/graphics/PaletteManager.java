@@ -1,4 +1,4 @@
-package graphics;
+package com.blackjack.game.graphics;
 
 public class PaletteManager {
 

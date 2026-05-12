@@ -1,4 +1,4 @@
-package ai;
+package com.blackjack.game.ai;
 
 public enum BotDecision {
 

@@ -1,4 +1,4 @@
-package players;
+package com.blackjack.game.players;
 
 public class HumanPlayer extends Player {
 

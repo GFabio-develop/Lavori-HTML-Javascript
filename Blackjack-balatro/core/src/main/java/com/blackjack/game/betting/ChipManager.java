@@ -1,6 +1,6 @@
-package betting;
+package com.blackjack.game.betting;
 
-import players.Player;
+import com.blackjack.game.players.Player;
 
 public class ChipManager {
 

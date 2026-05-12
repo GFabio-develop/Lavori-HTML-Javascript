@@ -1,7 +1,7 @@
-package players;
+package com.blackjack.game.players;
 
-import ai.BotDecision;
-import ai.CardCounter;
+import com.blackjack.game.ai.BotDecision;
+import com.blackjack.game.ai.CardCounter;
 
 import java.util.Random;
 

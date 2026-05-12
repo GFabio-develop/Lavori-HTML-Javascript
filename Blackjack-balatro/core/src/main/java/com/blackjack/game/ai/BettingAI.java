@@ -1,7 +1,7 @@
-package ai;
+package com.blackjack.game.ai;
 
-import players.BotPlayer;
-import players.Personality;
+import com.blackjack.game.players.BotPlayer;
+import com.blackjack.game.players.Personality;
 
 public class BettingAI {
 

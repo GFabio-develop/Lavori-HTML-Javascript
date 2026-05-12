@@ -1,10 +1,10 @@
-package game;
+package com.blackjack.game.game;
 
-import cards.Card;
-import cards.Deck;
-import players.BotPlayer;
-import players.Dealer;
-import players.Player;
+import com.blackjack.game.cards.Card;
+import com.blackjack.game.cards.Deck;
+import com.blackjack.game.players.BotPlayer;
+import com.blackjack.game.players.Dealer;
+import com.blackjack.game.players.Player;
 
 import java.util.List;
 
