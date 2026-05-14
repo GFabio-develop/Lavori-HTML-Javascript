@@ -1,44 +1,174 @@
-# Lavori-HTML-Javascript
-<br>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lavori HTML Javascript</title>
 
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
+    body{
+      min-height:100vh;
+      background: linear-gradient(135deg, #dff6ff, #9bd6ff, #5aa9e6);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:40px 20px;
+    }
 
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.html">
-    Anagrafica 1.0
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.1.html">
-    Anagrafica 1.1
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_2.0.html">
-    Anagrafica 2.0
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/conversione decimale.html">
-    Conversione decimale
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Compito_subnet_mask.html">
-    Subnet Binaria
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Subnet_mask_Host.html">
-    Subnet Mask Host
-  </a><br>
-  <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/calcolatrice/calcolatrice/calc.html">
-    Calcolatrice    
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_3.0.html">
-    Anagrafica 3.0   
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/compito domani/index.html">
-    Lavoro URL  
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_4.0/Anagrafica_4.0.html">
-   anagrafica 4.0  
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica 5.0/Anagrafica_5.0.html">
-   anagrafica 5.0  
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_6.0/Anagrafica_6.html">
-   anagrafica 6.0  
-  </a><br>
-<a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/docs/blackjack-balatro/">
-  Black Jack con grafica Java LibGDX
-</a><br>
+    .container{
+      width:100%;
+      max-width:800px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius:25px;
+      padding:40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    h1{
+      text-align:center;
+      color:#ffffff;
+      font-size:42px;
+      margin-bottom:15px;
+      text-shadow:2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .intro{
+      text-align:center;
+      color:#eef9ff;
+      margin-bottom:35px;
+      font-size:18px;
+    }
+
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    .links a{
+      text-decoration:none;
+      background: linear-gradient(135deg, #1e88e5, #42a5f5);
+      color:white;
+      padding:16px 24px;
+      border-radius:15px;
+      font-size:18px;
+      font-weight:bold;
+      transition: all 0.3s ease;
+      box-shadow:0 5px 15px rgba(0,0,0,0.15);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .links a:hover{
+      transform:translateY(-5px) scale(1.02);
+      background: linear-gradient(135deg, #1565c0, #64b5f6);
+      box-shadow:0 10px 20px rgba(0,0,0,0.25);
+    }
+
+    .links a::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background:rgba(255,255,255,0.2);
+      transition:0.5s;
+    }
+
+    .links a:hover::before{
+      left:100%;
+    }
+
+    @media(max-width:600px){
+      h1{
+        font-size:32px;
+      }
+
+      .links a{
+        font-size:16px;
+        padding:14px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Lavori-HTML-Javascript</h1>
+
+    <p class="intro">
+      Raccolta dei miei progetti sviluppati in HTML, CSS e JavaScript.
+      Seleziona uno dei lavori qui sotto per visualizzarlo.
+    </p>
+
+    <div class="links">
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.html">
+        Anagrafica 1.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_1.1.html">
+        Anagrafica 1.1
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/anagrafica_2.0.html">
+        Anagrafica 2.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/conversione decimale.html">
+        Conversione decimale
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Compito_subnet_mask.html">
+        Subnet Binaria
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Subnet_mask_Host.html">
+        Subnet Mask Host
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/calcolatrice/calcolatrice/calc.html">
+        Calcolatrice
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_3.0.html">
+        Anagrafica 3.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/compito domani/index.html">
+        Lavoro URL
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_4.0/Anagrafica_4.0.html">
+        anagrafica 4.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica 5.0/Anagrafica_5.0.html">
+        anagrafica 5.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/Anagrafica_6.0/Anagrafica_6.html">
+        anagrafica 6.0
+      </a>
+
+      <a href="https://gfabio-develop.github.io/Lavori-HTML-Javascript/docs/blackjack-balatro/">
+        Black Jack con grafica Java LibGDX
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
