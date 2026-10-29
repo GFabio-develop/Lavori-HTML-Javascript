@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabella Dinamica - Modello 1999 (ES3)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    #caricamento {
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Andamento Nazionale COVID-19</h2>
+  <div id="caricamento">Caricamento dati in corso...</div>
+
+  <table id="tabella" border="1">
+    <thead>
+      <tr id="intestazioneTabella"></tr>
+    </thead>
+    <tbody id="corpoTabella"></tbody>
+  </table>
+
+  <script>
+    // URL del file JSON
+    var url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json";
+
+    // Creazione dell'oggetto XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url, true);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        try {
+          // Parsing della risposta JSON (stile ES3)
+          var dati = eval("(" + xhr.responseText + ")"); // oppure JSON.parse se supportato dall'ambiente
+
+          // Rimuoviamo il messaggio di caricamento
+          document.getElementById("caricamento").style.display = "none";
+
+          if (dati.length > 0) {
+            var primoOggetto = dati[0];
+
+            // Lettura delle chiavi e del numero di chiavi usando Object.keys()
+            var numeroChiavi = Object.keys(primoOggetto).length;
+            var keys = Object.keys(primoOggetto);
+
+            var theadTr = document.getElementById("intestazioneTabella");
+            var tbody = document.getElementById("corpoTabella");
+
+            // 1. Popolamento dinamico dell'intestazione (thead) con ciclo for classico
+            var i;
+            for (i = 0; i < keys.length; i++) {
+              var th = document.createElement("th");
+              th.textContent = keys[i];
+              theadTr.appendChild(th);
+            }
+
+            // 2. Popolamento dinamico delle righe per ogni elemento del JSON
+            var j, k;
+            for (j = 0; j < dati.length; j++) {
+              var item = dati[j];
+              var riga = document.createElement("tr");
+
+              for (k = 0; k < keys.length; k++) {
+                var cella = document.createElement("td");
+                cella.textContent = item[keys[k]];
+                riga.appendChild(cella);
+              }
+
+              tbody.appendChild(riga);
+            }
+          }
+        } catch (errore) {
+          console.error("Errore nel parsing del JSON:", errore);
+          document.getElementById("caricamento").textContent = "Errore nel parsing dei dati.";
+        }
+      } else if (xhr.readyState === 4) {
+        document.getElementById("caricamento").textContent = "Errore nel caricamento dei dati dal server.";
+      }
+    };
+
+    // Invio della richiesta
+    xhr.send();
+  </script>
+
+</body>
+</html>
