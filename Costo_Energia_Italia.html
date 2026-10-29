@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andamento Storico PUN</title>
+    <!-- Qui carichiamo la libreria Chart.js da internet per poter fare il grafico -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Regole di stile per centrare tutto e rendere la pagina carina */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+        h2 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        p.subtitle {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        /* Diciamo al canvas di occupare tutto lo spazio disponibile nel box */
+        canvas {
+            width: 100% !important;
+            height: 450px !important;
+        }
+        .footer-note {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Titoli e sottotitoli che verranno riempiti da JavaScript -->
+        <h2 id="titolo-grafico"></h2>
+        <p class="subtitle" id="sottotitolo-grafico"></p>
+        
+        <!-- QUESTO È IL CANVAS: l'elemento HTML dove verrà disegnato il grafico -->
+        <canvas id="punChart"></canvas>
+        
+        <div class="footer-note" id="fonte-grafico"></div>
+    </div>
+
+    <script>
+        // I DATI: Salviamo il file JSON direttamente dentro una variabile JavaScript
+        const datiJson = {
+            "descrizione": "Andamento storico indicativo del costo dell'energia elettrica all'ingrosso (PUN - Prezzo Unico Nazionale) in Italia",
+            "unita_di_misura": "EUR/MWh",
+            "fonte_riferimento": "Elaborazione dati storici GME / ARERA",
+            "aggiornamento": "Ottobre 2026",
+            "andamento_mensile": [
+                { "anno": 2024, "mese": "Gennaio", "valore_medio_pun": 99.1 },
+                { "anno": 2024, "mese": "Febbraio", "valore_medio_pun": 87.6 },
+                { "anno": 2024, "mese": "Marzo", "valore_medio_pun": 89.9 },
+                { "anno": 2024, "mese": "Aprile", "valore_medio_pun": 86.8 },
+                { "anno": 2024, "mese": "Maggio", "valore_medio_pun": 94.7 },
+                { "anno": 2024, "mese": "Giugno", "valore_medio_pun": 103.2 },
+                { "anno": 2024, "mese": "Luglio", "valore_medio_pun": 112.3 },
+                { "anno": 2024, "mese": "Agosto", "valore_medio_pun": 128.4 },
+                { "anno": 2024, "mese": "Settembre", "valore_medio_pun": 117.1 },
+                { "anno": 2024, "mese": "Ottobre", "valore_medio_pun": 116.5 },
+                { "anno": 2024, "mese": "Novembre", "valore_medio_pun": 121.3 },
+                { "anno": 2024, "mese": "Dicembre", "valore_medio_pun": 115.4 },
+                { "anno": 2025, "mese": "Gennaio", "valore_medio_pun": 143.0 },
+                { "anno": 2025, "mese": "Primo Trimestre (Media)", "valore_medio_pun": 138.1 },
+                { "anno": 2025, "mese": "Media Annuale", "valore_medio_pun": 116.0 },
+                { "anno": 2026, "mese": "Gennaio", "valore_medio_pun": 131.0 },
+                { "anno": 2026, "mese": "Febbraio", "valore_medio_pun": 114.41 },
+                { "anno": 2026, "mese": "Marzo", "valore_medio_pun": 143.4 },
+                { "anno": 2026, "mese": "Aprile", "valore_medio_pun": 119.47 },
+                { "anno": 2026, "mese": "Ottobre (Spot Corrente)", "valore_medio_pun": 225.37 }
+            ]
+        };
+
+        // TESTI: Mettiamo il testo del JSON dentro i titoli della pagina HTML
+        document.getElementById("titolo-grafico").innerText = datiJson.descrizione;
+        document.getElementById("sottotitolo-grafico").innerText = `Unità di misura: ${datiJson.unita_di_misura}`;
+        document.getElementById("fonte-grafico").innerText = `Fonte: ${datiJson.fonte_riferimento} — Aggiornamento: ${datiJson.aggiornamento}`;
+
+        // 3. PULIZIA DATI: Togliamo le voci riassuntive (tipo "Media Annuale") per lasciare solo i mesi veri
+        const datiFiltrati = datiJson.andamento_mensile.filter(item => 
+            !item.mese.includes("Media") && !item.mese.includes("Trimestre")
+        );
+
+        // PREPARAZIONE GRAFICO: Creiamo le etichette per l'asse X (es. "Gennaio 2024") e i numeri per l'asse Y
+        const labels = datiFiltrati.map(item => `${item.mese} ${item.anno}`);
+        const valori = datiFiltrati.map(item => item.valore_medio_pun);
+
+        // DISEGNO: Usiamo Chart.js per disegnare il grafico dentro al nostro <canvas>
+        const ctx = document.getElementById('punChart').getContext('2d');
+        const punChart = new Chart(ctx, {
+            type: 'line', // Scegliamo un grafico a linee
+            data: {
+                labels: labels, // Etichette (asse X)
+                datasets: [{
+                    label: 'PUN Medio (EUR/MWh)',
+                    data: valori, // I valori numerici (asse Y)
+                    borderColor: '#3498db', // Colore della linea (blu)
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)', // Sfumatura sotto la linea
+                    borderWidth: 2.5,
+                    pointBackgroundColor: '#2980b9', // Colore dei pallini sui punti
+                    pointRadius: 4,
+                    fill: true,
+                    tension: 0.2 // Rende la linea leggermente curva e morbida
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'EUR / MWh'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            maxRotation: 45, // Inclina le date per leggerle meglio
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
